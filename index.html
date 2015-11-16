@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dom-Repeat</title>
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="app/elements/simple-host/simple-host.html">
+</head>
+<body>
+<template is="dom-bind" id="demo">
+
+  <template is="dom-repeat" items="[[items]]">
+    <simple-host data="{{item}}"></simple-host>
+  </template>
+
+</template>
+
+<script>
+  var demo = document.querySelector("#demo");
+  demo.items = [];
+  demo.items.push({id: 1, just:{a:{nested: -1}}});
+//  demo.items.push({id: 2, just:{a:{nested: -1}}});
+
+</script>
+
+
+</body>
+</html>

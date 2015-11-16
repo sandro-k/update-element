@@ -1,0 +1,50 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../simple-timer/simple-timer.html">
+
+<dom-module id="simple-host">
+  <template>
+    <style>
+      :host {
+        display: block;
+        margin: 1em;
+      }
+    </style>
+    <div>Hello from ID: [[data.id]]; value: [[data.just.a.nested]]</div>
+    <simple-timer time="{{data.just.a.nested}}"></simple-timer>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'simple-host',
+
+      properties: {
+        data: {
+          type: Object,
+          notify: true
+        }
+      },
+
+      observers: [
+        '_updateData(data.*)'
+      ],
+
+      _updateData: function(path){
+        console.log("_updateData #:", this.data.id, path);
+      }
+
+    });
+  })();
+  </script>
+</dom-module>
